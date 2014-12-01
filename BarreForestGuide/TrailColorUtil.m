@@ -242,7 +242,21 @@
     } else {
       int difficulty = trailTypeIdToDifficultyGroup[trailTypeId];
       if (difficulty==-1) difficulty=numTrailDifficultyGroups-1;
-      double hue = (1.0f-(difficulty/(numTrailDifficultyGroups-1)))*0.3333333;
+      unsigned int c;
+      switch(difficulty) {
+        case 0: c=0xfd8d3c; break;
+        case 1: c=0xf16913; break;
+        case 2: c=0xd94801; break;
+        case 3: c=0xa63603; break;
+        case 4: c=0x7f2704; break;
+        default: c=0;       break;
+      }
+      double red   = ((double)((c>>16)&0xff))/((double)255);
+      double green = ((double)((c>> 8)&0xff))/((double)255);
+      double blue  = ((double)((c    )&0xff))/((double)255);
+      //NSLog(@"getTrailTypeColor(%d)=difficulty:%d, red=%f, green=%f, blue=%f",trailTypeId,difficulty,red,green,blue);
+      color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
+      /*
       if ((self.configModel.mapType==kGMSTypeNormal) ||
           (self.configModel.mapType==kGMSTypeTerrain))
       {
@@ -250,6 +264,7 @@
       } else {
         color = [UIColor colorWithHue:hue saturation:0.5f brightness:1.0f alpha:1.0f];
       }
+      */
     }
     [self.trailTypeColor setObject:color forKey:ttid];
   }
