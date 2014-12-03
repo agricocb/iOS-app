@@ -304,6 +304,7 @@
 			buildConfigurationList = 6E661E1919F4C68E00481D4D /* Build configuration list for PBXNativeTarget "BarreForestGuide" */;
 			buildPhases = (
 				6EE49F4C19F95A0400E53AC5 /* ShellScript */,
+				6E4B44F41A2EB45A00035BAF /* ShellScript */,
 				6E661DF219F4C68D00481D4D /* Sources */,
 				6E661DF319F4C68D00481D4D /* Frameworks */,
 				6E661DF419F4C68D00481D4D /* Resources */,
@@ -422,6 +423,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = ./Install_GMapsAPI.sh;
+		};
+		6E4B44F41A2EB45A00035BAF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ./Install_FacebookSDK.sh;
 		};
 /* End PBXShellScriptBuildPhase section */
 
