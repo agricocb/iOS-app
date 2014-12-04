@@ -146,6 +146,7 @@
     } else {
         //Do stuff that you would do if the application was not active
     }
+}
 
 - (BOOL)application:(UIApplication*)application
             openURL:(NSURL*)url
