@@ -43,6 +43,8 @@
 		6EC42B0B1A309C2A00F0C105 /* millstone_trails_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EC42B071A309C2A00F0C105 /* millstone_trails_logo.jpg */; };
 		6EC42B0C1A309C2A00F0C105 /* quarry_disc_golf_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EC42B081A309C2A00F0C105 /* quarry_disc_golf_logo.jpg */; };
 		6EC42B0D1A309C2A00F0C105 /* town_of_barre_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EC42B091A309C2A00F0C105 /* town_of_barre_logo.png */; };
+		6E9AEF351A3003DB003938B9 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9AEF341A3003DB003938B9 /* FacebookSDK.framework */; };
+		6E9AEF381A300519003938B9 /* FacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9AEF371A300519003938B9 /* FacebookViewController.m */; };
 		A015441D1A1E99DD00C26FB1 /* Overlook.png in Resources */ = {isa = PBXBuildFile; fileRef = A015441C1A1E99DD00C26FB1 /* Overlook.png */; };
 		A015441F1A1E99F800C26FB1 /* ParkingLot.png in Resources */ = {isa = PBXBuildFile; fileRef = A015441E1A1E99F800C26FB1 /* ParkingLot.png */; };
 		A01544231A1E9AEE00C26FB1 /* Store.png in Resources */ = {isa = PBXBuildFile; fileRef = A01544221A1E9AEE00C26FB1 /* Store.png */; };
@@ -111,6 +113,9 @@
 		6EC42B071A309C2A00F0C105 /* millstone_trails_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = millstone_trails_logo.jpg; path = BarreForestGuide/Images.xcassets/logos/millstone_trails_logo.jpg; sourceTree = "<group>"; };
 		6EC42B081A309C2A00F0C105 /* quarry_disc_golf_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = quarry_disc_golf_logo.jpg; path = BarreForestGuide/Images.xcassets/logos/quarry_disc_golf_logo.jpg; sourceTree = "<group>"; };
 		6EC42B091A309C2A00F0C105 /* town_of_barre_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = town_of_barre_logo.png; path = BarreForestGuide/Images.xcassets/logos/town_of_barre_logo.png; sourceTree = "<group>"; };
+		6E9AEF341A3003DB003938B9 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		6E9AEF361A300519003938B9 /* FacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookViewController.h; sourceTree = "<group>"; };
+		6E9AEF371A300519003938B9 /* FacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookViewController.m; sourceTree = "<group>"; };
 		A015441C1A1E99DD00C26FB1 /* Overlook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Overlook.png; sourceTree = "<group>"; };
 		A015441E1A1E99F800C26FB1 /* ParkingLot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ParkingLot.png; sourceTree = "<group>"; };
 		A01544221A1E9AEE00C26FB1 /* Store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Store.png; sourceTree = "<group>"; };
@@ -137,6 +142,7 @@
 				6E78103719F77AAE00F2AE80 /* GoogleMaps.framework in Frameworks */,
 				6E661E2F19F6718E00481D4D /* GLKit.framework in Frameworks */,
 				6E661E2D19F6718000481D4D /* CoreText.framework in Frameworks */,
+				6E9AEF351A3003DB003938B9 /* FacebookSDK.framework in Frameworks */,
 				6E661E2B19F6717100481D4D /* CoreLocation.framework in Frameworks */,
 				6E661E2919F6716700481D4D /* CoreData.framework in Frameworks */,
 				6E661E2719F6715700481D4D /* AVFoundation.framework in Frameworks */,
@@ -198,6 +204,8 @@
 				6E661E0119F4C68D00481D4D /* MapViewController.m */,
 				6E27B0D81A25B673000916FF /* FilterViewController.h */,
 				6E27B0D91A25B673000916FF /* FilterViewController.m */,
+				6E9AEF361A300519003938B9 /* FacebookViewController.h */,
+				6E9AEF371A300519003938B9 /* FacebookViewController.m */,
 				6E310FFB1A236F05008F5345 /* TrailColorUtil.h */,
 				6E310FFC1A236F05008F5345 /* TrailColorUtil.m */,
 				6E5DEF991A1EF86E00B5B326 /* SettingsViewController.h */,
@@ -243,6 +251,7 @@
 		6E661E2119F6706800481D4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E9AEF341A3003DB003938B9 /* FacebookSDK.framework */,
 				6E78103819F77AFC00F2AE80 /* GoogleMaps.bundle */,
 				6E78103619F77AAE00F2AE80 /* GoogleMaps.framework */,
 				6E661E3E19F74AC300481D4D /* libsqlite3.dylib */,
@@ -452,6 +461,7 @@
 				6E84EB9E1A20076D009094A8 /* WebKitViewController.m in Sources */,
 				6E310FFD1A236F05008F5345 /* TrailColorUtil.m in Sources */,
 				6E27B0DA1A25B673000916FF /* FilterViewController.m in Sources */,
+				6E9AEF381A300519003938B9 /* FacebookViewController.m in Sources */,
 				6E322DE31A1B127300FE4B45 /* ConfigModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +593,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/FacebookSDK",
 				);
 				INFOPLIST_FILE = BarreForestGuide/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -598,6 +609,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/FacebookSDK",
 				);
 				INFOPLIST_FILE = BarreForestGuide/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

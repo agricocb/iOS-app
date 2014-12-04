@@ -582,7 +582,7 @@
         <!--Facebook Login-->
         <scene sceneID="YPl-ec-APh">
             <objects>
-                <viewController title="Facebook Login" id="nyn-xy-vGm" sceneMemberID="viewController">
+                <viewController title="Facebook Login" id="nyn-xy-vGm" customClass="FacebookViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y9N-dh-McC"/>
                         <viewControllerLayoutGuide type="bottom" id="MF7-DG-keU"/>
@@ -591,18 +591,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaS-DI-Wo1">
-                                <rect key="frame" x="242" y="497" width="38" height="30"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="cyp-ZX-fhB" kind="show" id="UUA-IF-Ozg"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KE6-Fh-jeL" userLabel="FBLoginView" customClass="FBLoginView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="loginView" destination="KE6-Fh-jeL" id="wPI-iM-7vz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82f-Xf-713" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
