@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ConfigModel.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+  NSMutableData *_responseData;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 @property ConfigModel *configModel;
