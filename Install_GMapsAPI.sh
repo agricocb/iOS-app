@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd $(dirname $0)
+
 key=0
 unkey=0
 if [ "$1"x == "-key"x -o "$1"x == "--key"x ]; then
