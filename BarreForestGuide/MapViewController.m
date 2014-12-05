@@ -274,28 +274,30 @@
           hole_poly.tappable = YES;
           hole_poly.map = mapView_;
 
-          if (self.configModel.discGolfIconsEnabled) {
-            CLLocationCoordinate2D basketCoord = [path coordinateAtIndex:([path count]-1)];
-            GMSMarker *basketMarker = [GMSMarker markerWithPosition:basketCoord];
-            basketMarker.title = [NSString stringWithFormat:@"Disc Golf Hole %d Basket", hole_num];
-            basketMarker.icon = basket_icon;
-            basketMarker.map = mapView_;
+          if (self.configModel.discGolfEnabled) {
+            if (self.configModel.discGolfIconsEnabled) {
+              CLLocationCoordinate2D basketCoord = [path coordinateAtIndex:([path count]-1)];
+              GMSMarker *basketMarker = [GMSMarker markerWithPosition:basketCoord];
+              basketMarker.title = [NSString stringWithFormat:@"Disc Golf Hole %d Basket", hole_num];
+              basketMarker.icon = basket_icon;
+              basketMarker.map = mapView_;
 
-            CLLocationCoordinate2D teeCoord = [path coordinateAtIndex:0];
-            GMSMarker *teeMarker = [GMSMarker markerWithPosition:teeCoord];
-            teeMarker.title = [NSString stringWithFormat:@"Disc Golf Hole %d Tee", hole_num];
-            teeMarker.icon = tee_icon;
-            teeMarker.map = mapView_;
-          } else {
-            GMSPolyline *tee_poly = drawMapArrowOnPath(path, 0, 1, NO);
-            tee_poly.strokeColor = hole_polyline_color;
-            tee_poly.strokeWidth = hole_polyline_width;
-            tee_poly.map = mapView_;
+              CLLocationCoordinate2D teeCoord = [path coordinateAtIndex:0];
+              GMSMarker *teeMarker = [GMSMarker markerWithPosition:teeCoord];
+              teeMarker.title = [NSString stringWithFormat:@"Disc Golf Hole %d Tee", hole_num];
+              teeMarker.icon = tee_icon;
+              teeMarker.map = mapView_;
+            } else {
+              GMSPolyline *tee_poly = drawMapArrowOnPath(path, 0, 1, NO);
+              tee_poly.strokeColor = hole_polyline_color;
+              tee_poly.strokeWidth = hole_polyline_width;
+              tee_poly.map = mapView_;
 
-            GMSPolyline *basket_poly = drawMapArrowOnPath(path, -1, -2, YES);
-            basket_poly.strokeColor = hole_polyline_color;
-            basket_poly.strokeWidth = hole_polyline_width;
-            basket_poly.map = mapView_;
+              GMSPolyline *basket_poly = drawMapArrowOnPath(path, -1, -2, YES);
+              basket_poly.strokeColor = hole_polyline_color;
+              basket_poly.strokeWidth = hole_polyline_width;
+              basket_poly.map = mapView_;
+            }
           }
         }
       };

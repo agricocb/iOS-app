@@ -166,6 +166,15 @@
           break;
         case 1:
           cell.textLabel.text = @" - Teebox and Basket Icons";
+          if (!self.configModel.discGolfEnabled) {
+            cell.userInteractionEnabled = NO;
+            cell.textLabel.enabled = NO;
+            cell.tintAdjustmentMode=UIViewTintAdjustmentModeDimmed;
+          } else {
+            cell.userInteractionEnabled = YES;
+            cell.textLabel.enabled = YES;
+            cell.tintAdjustmentMode=UIViewTintAdjustmentModeNormal;
+          }
           enabled = self.configModel.discGolfIconsEnabled;
           break;
       }
