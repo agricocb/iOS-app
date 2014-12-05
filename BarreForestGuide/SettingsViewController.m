@@ -61,11 +61,14 @@ map_season_t rowToSeason(int row) {
   currentMapTypeRow = mapTypeToRow(self.configModel.mapType);
   currentSeasonRow = seasonToRow(self.configModel.mapSeason);
   [self.autoFollowGPS setOn:self.configModel.mapTracksGPS animated:NO];
+  if (self.configModel.emailAddress)
+    self.emailAddress.text = self.configModel.emailAddress;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
   self.configModel.mapTracksGPS = [self.autoFollowGPS isOn];
+  [self.configModel updateEmailAddress:self.emailAddress.text];
   [self.configModel saveToDefaults];
   [self.trailColorUtil invalidateColorCache];
 }

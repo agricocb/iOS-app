@@ -21,12 +21,15 @@ typedef enum { summer_map_season, winter_map_season, auto_map_season } map_seaso
 @property NSMutableDictionary  *poiTypeEnabled;
 @property BOOL                  discGolfEnabled;
 @property BOOL                  discGolfIconsEnabled;
+@property NSString             *emailAddress;
 
 + (ConfigModel*)getConfigModel;
 - (id) initFromDefaults;
 - (void) saveToDefaults;
 
 - (BOOL) isSummerMapSeason;
+
+- (void) updateEmailAddress:(NSString*)address;
 
 @end
 

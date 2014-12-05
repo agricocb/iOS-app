@@ -13,6 +13,7 @@
 @interface SettingsViewController : UITableViewController
 
 @property (nonatomic, weak) IBOutlet UISwitch        *autoFollowGPS;
+@property (nonatomic, weak) IBOutlet UITextField     *emailAddress;
 @property                            ConfigModel     *configModel;
 @property                            TrailColorUtil  *trailColorUtil;
 
