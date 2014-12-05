@@ -112,8 +112,8 @@
     char *season = [self.configModel isSummerMapSeason] ? "summer" : "winter";
 
     NSString *trailQuerySQL =
-        [NSString stringWithFormat:@"select map_object_id,latitude,longitude from trail,coordinate " \
-                                    "where coordinate.map_object_id=trail.id and %s_uses_id=? order by map_object_id,seq;", season];
+        [NSString stringWithFormat:@"select map_object_id,name,url,latitude,longitude from map_object,trail,coordinate " \
+                                    "where map_object.id=trail.id and coordinate.map_object_id=trail.id and %s_uses_id=? order by map_object_id,seq;", season];
     NSString *trailTypeQuerySQL =
         [NSString stringWithFormat:@"select distinct %s_uses_id from trail;", season];
     sqlite3_stmt *trailQueryStmt = nil;
@@ -131,29 +131,39 @@
           sqlite3_bind_int(trailQueryStmt, 1, trail_type_id);
           GMSMutablePath *trailpath = nil;
           int prev_trail_id = -1;
+          void (^addTrailToMap)(GMSMutablePath*,char*,char*) = ^(GMSMutablePath *trailpath, char *name, char *url) {
+            if (trailpath && ([trailpath count]>1)) {
+              GMSPolyline *trailpoly = [GMSPolyline polylineWithPath:trailpath];
+              if ((name)&&(*name)) { // shortcut to say "name is not null and is not zero length
+                trailpoly.title = [NSString stringWithUTF8String:name];
+                //if (url) trailpoly.snippet = [NSString stringWithUTF8String:url]; // For this, we need to subclass GMSPolyLine to add
+	    // the snippet.  Easy to do, but not the focus here,
+	    // since we don't have any URLs for trails anyway
+                trailpoly.tappable = YES;
+              }
+              trailpoly.strokeColor = trail_type_color;
+              trailpoly.strokeWidth = trail_type_width;
+              trailpoly.map = mapView_;
+              //NSLog(@"Putting Polyline on the map");
+            }
+          };
+          char *name = 0;
+          char *url = 0;
           while(sqlite3_step(trailQueryStmt) == SQLITE_ROW) {
             int trail_id = sqlite3_column_int(trailQueryStmt, 0);
-            double latitude = sqlite3_column_double(trailQueryStmt, 1);
-            double longitude = sqlite3_column_double(trailQueryStmt, 2);
+            name = (char*)sqlite3_column_text(trailQueryStmt, 1);
+            url = (char*)sqlite3_column_text(trailQueryStmt, 2);
+            double latitude = sqlite3_column_double(trailQueryStmt, 3);
+            double longitude = sqlite3_column_double(trailQueryStmt, 4);
             //NSLog(@"trail_id %d (%f, %f)", trail_id, latitude, longitude);
             if (prev_trail_id != trail_id) {
-              if (trailpath && ([trailpath count]>1)) {
-                GMSPolyline *trailpoly = [GMSPolyline polylineWithPath:trailpath];
-                trailpoly.strokeColor = trail_type_color;
-                trailpoly.strokeWidth = trail_type_width;
-                trailpoly.map = mapView_;
-                //NSLog(@"Putting Polyline on the map");
-              }
+              addTrailToMap(trailpath, name, url);
               trailpath = [GMSMutablePath path];
               prev_trail_id = trail_id;
             }
             [trailpath addCoordinate:CLLocationCoordinate2DMake(latitude, longitude)];
           }
-          if (trailpath && ([trailpath count]>1)) {
-            GMSPolyline *trailpoly = [GMSPolyline polylineWithPath:trailpath];
-            trailpoly.strokeColor = trail_type_color;
-            trailpoly.map = mapView_;
-          }
+          addTrailToMap(trailpath, name, url);
         }
         sqlite3_finalize(trailTypeQueryStmt);
       } else
