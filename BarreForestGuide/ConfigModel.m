@@ -109,8 +109,7 @@
       NSString *uniqueIdentifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
       uniqueIdentifier = [uniqueIdentifier stringByReplacingOccurrencesOfString:@"-" withString:@""];
 
-      //NSString *url  = [NSString stringWithFormat:@"http://www.uvm.edu/~kgauger/BarreTownForest/updateToken.php"];
-      NSString *url  = [NSString stringWithFormat:@"http://home.theagricolas.org/cs275/updateToken.php"];
+      NSString *url  = [NSString stringWithFormat:@"http://www.uvm.edu/~kgauger/BarreTownForest/updateToken.php"];
       NSString *addrEsc = [self.emailAddress stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
       NSString *post = [NSString stringWithFormat:@"&device_id=%@&email_address=%@", uniqueIdentifier, addrEsc];
       NSData   *postData   = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
